@@ -9,15 +9,15 @@
             @endif
             <div class="card">
                 <div class="card-header">All Categories</div>
-                    <div class="card-body">
+                <div class="card-body">
                     <table class="table">
                         <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">No</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Edit</th>
-                            <th scope="col">Delete</th>
-                        </tr>
+                            <tr>
+                                <th scope="col">No</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Edit</th>
+                                <th scope="col">Delete</th>
+                            </tr>
                         </thead>
                         <tbody>
                         @if($categories->count()>0)
@@ -26,7 +26,36 @@
                                 <th scope="row">{{ $key+1 }}</th>
                                 <td>{{ $category->name }}</td>
                                 <td><a href="{{ route('category.edit', [$category->id]) }}" class="btn btn-outline-info">Edit</a></td>
-                                <td><a href="{{ route('category.destroy', [$category->id]) }}" class="btn btn-outline-danger">Delete</a></td>
+                                <td>
+                                    
+                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $category->id }}">
+                                        Delete
+                                    </button>
+                                    </form>
+                                    </a>
+                                    <div class="modal fade" id="exampleModal{{ $category->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                        <form action="{{ route('category.destroy', [$category->id]) }}" method="POST">
+                                            @csrf  {{ method_field('DELETE') }} 
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                              Are you sure to delete this category?
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                            </div>
+                                        </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                </td>
                             </tr>
                         @endforeach
                         @else
@@ -34,7 +63,6 @@
                         @endif
                         </tbody>
                     </table>
-                    
                 </div>
             </div>
         </div>
