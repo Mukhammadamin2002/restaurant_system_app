@@ -7,17 +7,18 @@
             @if(Session::has('message'))
                     <div class="alert alert-success">{{ Session::get('message') }}</div>
             @endif
-            <form action="{{ route('category.store') }}" method="POST">
+            <form action="{{ route('category.update',[$category->id]) }}" method="POST">
                 @csrf
+                {{ method_field('PUT') }}
                 <div class="card">
-                    <div class="card-header">Menage Food Category</div>
+                    <div class="card-header">Update Food Category</div>
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="Enter name">
+                            <input type="text" name="name" class="form-control" value="{{ $category->name }}" placeholder="Enter name">
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-outline-primary">Submit</button>
+                            <button class="btn btn-warning">Update</button>
                         </div>
                     </div>
                 </div>
