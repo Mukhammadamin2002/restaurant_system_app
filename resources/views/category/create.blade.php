@@ -14,10 +14,13 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" class="form-control" placeholder="Enter name">
+                            <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name">
+                            @error('name')
+                                <strong class="text-danger">{{ $message }}</strong>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-outline-primary">Submit</button>
+                            <button class="btn btn-outline-primary btn-block">Submit</button>
                         </div>
                     </div>
                 </div>
