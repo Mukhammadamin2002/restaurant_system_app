@@ -15,10 +15,13 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" name="name" class="form-control" value="{{ $category->name }}" placeholder="Enter name">
+                            <input type="text" name="name" value="{{ $category->name }}" class="form-control @error('name') is-invalid @enderror" placeholder="Enter name">
+                            @error('name')
+                                <strong class="text-danger">{{ $message }}</strong>
+                            @enderror
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-warning">Update</button>
+                            <button class="btn btn-warning btn-block">Update</button>
                         </div>
                     </div>
                 </div>
