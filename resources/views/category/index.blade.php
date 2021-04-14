@@ -28,7 +28,7 @@
                                 <td><a href="{{ route('category.edit', [$category->id]) }}" class="btn btn-outline-info">Edit</a></td>
                                 <td>
                                     
-                                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal{{ $category->id }}">
+                                    <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#exampleModal{{ $category->id }}">
                                         Delete
                                     </button>
                                     </form>
@@ -48,7 +48,7 @@
                                               Are you sure to delete this category?
                                             </div>
                                             <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-outline-danger">Delete</button>
                                             </div>
                                         </div>

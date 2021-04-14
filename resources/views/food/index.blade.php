@@ -29,8 +29,8 @@
                                 <th><img src="{{ asset('images') }}/{{ $food->image }}" width="100" alt=""></th>
                                 <td>{{ $food->name }}</td>
                                 <td>{{ $food->description }}</td>
-                                <td>{{ $food->price }}</td>
-                                <td>{{ $food->category_id }}</td>
+                                <td>${{ $food->price }}</td>
+                                <td>{{ $food->category->name }}</td>
                                 <td><a href="{{ route('food.edit', [$food->id]) }}" class="btn btn-outline-info">Edit</a></td>
                                 <td>
                                     
@@ -69,6 +69,7 @@
                         @endif
                         </tbody>
                     </table>
+                    {{ $foods->links('pagination::bootstrap-4') }}
                 </div>
             </div>
         </div>
